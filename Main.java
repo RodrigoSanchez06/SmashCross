@@ -6,7 +6,7 @@ public class Main{
     public static void main(String[] args) {
         
         System.out.println("********** Bienvenido a Smash Cross **********\n");
-        System.out.println("Generando Arena...");
+        System.out.println("Generando Arena....");
         Arena arena = new Arena();
         int id = 0;
         Viewer firstViewer = new Viewer(id++, "Dittu", arena, "Rogerxdgta");
