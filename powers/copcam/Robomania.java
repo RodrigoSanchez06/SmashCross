@@ -79,7 +79,7 @@ public class Robomania implements Copcam{
     }
 
     public String defenseNarration(){
-        return "Meganman absorbe el daño con un escudo de plasma";
+        return "Meganman absorbe gran parte del daño con un escudo de plasma";
     }
 
     public String attackNarration(){
