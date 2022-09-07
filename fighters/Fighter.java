@@ -10,4 +10,5 @@ public interface Fighter {
         int randomInt = (int) Math.floor(Math.random() * (max - min + 1) + min);
         return randomInt;
     }
+    public double getLife();
 }
