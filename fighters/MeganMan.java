@@ -1,22 +1,23 @@
 package fighters;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import powers.copcam.Copcam;
 import powers.copcam.Matrix;
 import powers.copcam.Robomania;
 import powers.copcam.SuperSonic;
-import powers.nientiendo.*;
 
 public class MeganMan implements Fighter {
-
     private double life = 100;
     private double basicAttack = 10;
     private Copcam actual;
 
     public String fightersIntro() {
-        return "Korby llega volando en una estrella e impacta la arena, sonrie y empieza a calentar para el combate";
+        return "MeganMan salta de una nave directo hacia el escenario, hace una grieta en el, se levanta y se pone modo ataque";
+    }
+
+    public double realDamage() {
+        if (this.actual != null)
+            return this.basicAttack * this.actual.getDamage();
+        return this.basicAttack;
     }
 
     public void consumePowers() { // El metodo regresa el indice de la lista para
@@ -24,11 +25,11 @@ public class MeganMan implements Fighter {
         switch (acquiredPowerNumber) {
 
             case 1:
-                actual = new Matrix();
+                actual = new Robomania();
                 break;
 
             case 2:
-                actual = new Robomania();
+                actual = new Matrix();
                 break;
 
             case 3:
@@ -38,11 +39,13 @@ public class MeganMan implements Fighter {
     }
 
     @Override
-    public String defend() {
-        String formOfDefense = "";
-        formOfDefense = actual.defenseNarration();
-        this.restLife(this.basicAttack * actual.getDefense());
-        return formOfDefense;
+    public String defend(Fighter a) {
+        if (this.actual != null) {
+            this.restLife(a.realDamage() * this.actual.getDefense());
+            return actual.defenseNarration();
+        }
+        this.restLife(a.realDamage());
+        return "MeganMan se puso en guardia pero al no tener poder recibio todo el daño";
     }
 
     public void restLife(double totalDamage) {
