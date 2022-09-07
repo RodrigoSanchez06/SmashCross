@@ -5,25 +5,60 @@ import powers.chinpokomon.*;
 
 public class Dittu implements Fighter{
 
+    private double life = 100;
+    private double basicAttack = 10;
     private Chinpokomon actual;
-    private double life=100;
-    private final double DAÑO_BASE=10;
-    private List<Chinpokomon> availablePowers = new LinkedList<Chinpokomon>();
 
-    public String fightersIntro(){
-        return "";
+    public String fightersIntro() {
+        return "Dittu sale debajo del escenario listo para la pelea";
+    }
+
+    public double realDamage(){
+        if(this.actual != null)
+            return this.basicAttack*this.actual.getDamage();
+        return this.basicAttack;
+    }
+
+    public void consumePowers() { // El metodo regresa el indice de la lista para
+        int acquiredPowerNumber = Fighter.randomIntNumber(1,3);
+        switch (acquiredPowerNumber) {
+
+        case 1:
+            actual = new DittoEternalMemories();
+            break;
+
+        case 2:
+            actual = new DittoFlyingD();
+            break;
+
+        case 3:
+            actual = new DittoNewt();
+            break;
+        }
     }
 
     @Override
-    public double defend() {
-        // TODO Auto-generated method stub
-        return 0;
+    public String defend(Fighter a) {
+        if(this.actual!=null){
+            this.restLife(a.realDamage()*this.actual.getDefense());
+            return actual.defenseNarration();
+        }
+        this.restlife(a.realDamage());
+        return "Dittu se puso en guardia pero al no tener poder recibio todo el daño";
+    }
+
+    public void restLife(double totalDamage) {
+        this.life = this.life - totalDamage;
+
     }
 
     @Override
-    public String attack(Fighter fighter) {
-        // TODO Auto-generated method stub
-        return null;
+    public String attack(Fighter a) {
+        String attackForm = "";
+        attackForm = actual.attackNarration();
+        a.restLife(this.basicAttack * actual.getDamage());
+
+        return attackForm;
     }
     
 }
