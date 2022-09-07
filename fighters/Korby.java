@@ -49,7 +49,7 @@ public class Korby implements Fighter {
       this.restLife(a.realDamage() * this.actual.getDefense());
       return actual.defenseNarration();
     }
-    this.restlife(a.realDamage());
+    this.restLife(a.realDamage());
     return "Korby se puso en guardia pero al no tener poder recibio todo el daño";
   }
 
