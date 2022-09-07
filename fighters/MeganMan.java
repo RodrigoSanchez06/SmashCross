@@ -55,11 +55,12 @@ public class MeganMan implements Fighter {
 
     @Override
     public String attack(Fighter a) {
-        String attackForm = "";
-        attackForm = actual.attackNarration();
-        a.restLife(this.basicAttack * actual.getDamage());
-
-        return attackForm;
+        if (this.actual != null) {
+            this.restLife(a.restLife(this.realDamage()));
+            return actual.attackNarration();
+        }
+        a.restLife(this.basicAttack);
+        return "MeganMan da golpes a piño limpio";
     }
 
 }
