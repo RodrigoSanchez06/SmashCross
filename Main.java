@@ -20,7 +20,8 @@ public class Main{
         int scenery = randomIntNumber(1,1);
         Fighter korby = new Korby();
         Fighter dittu = new Dittu();
-        Fighter meganMan = new  MeganMan(); 
+        Fighter meganMan = new  MeganMan();
+        String atack, cinematic; 
 
         System.out.println(scenery);
         
@@ -37,16 +38,61 @@ public class Main{
                 arena.setEventsInTheArea(meganMan.fightersIntro());
                 arena.communicate();
 
-                String atack = korby.attack(meganMan);
+                meganMan.consumePowers();
+                korby.consumePowers();
+
+                cinematic = meganMan.itemCinematic();
+                System.out.println(cinematic);
+                arena.setEventsInTheArea(cinematic);
+                arena.communicate();
+
+                cinematic = korby.itemCinematic();
+                System.out.println(cinematic);
+                arena.setEventsInTheArea(cinematic);
+                arena.communicate();
+
+                atack = korby.attack(meganMan);
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
                 
-                korby.attack(meganMan);
+                atack=korby.attack(dittu);
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
-                System.out.println(meganMan.getLife());
+
+                atack=meganMan.attack(korby);
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack=meganMan.attack(korby);
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack=meganMan.attack(korby);
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack=dittu.attack(korby);
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack=korby.defend(meganMan);
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack=dittu.attack(korby);
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                System.out.println(korby.getLife());
+                System.out.println(korby.dead());
                 break;
             
             case 2:

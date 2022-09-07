@@ -1,5 +1,9 @@
 package powers.chinpokomon;
 
+/**
+ * Clase que  representa al poder DittoEternalMemories de la franquicia 
+ * Chinpokomon
+ */
 public class DittoEternalMemories implements Chinpokomon{
 
     private String name;
@@ -8,6 +12,9 @@ public class DittoEternalMemories implements Chinpokomon{
     private double damagePercentage;
     private double defensePercentage;
 
+    /**
+     * Constructor de DittoEternalMemories se asignan valores por defecto.
+     */
     public DittoEternalMemories(){
         this.name = "DittoEternalMemories";
         this.technicalDetail="Dittu fuerza en su memoria a visualizar a su más grande rival, obteniendo la apariencia y poderes de un dragon de tamaño modesto";
@@ -15,30 +22,50 @@ public class DittoEternalMemories implements Chinpokomon{
         this.defensePercentage=0.6;
     }
 
+    /**
+     * Devuelve el nombre del podel.
+     * @return el nombre el poder.
+     */
     @Override
     public String getName() {
         return this.name;
     }
 
+     /**
+     * Asigna el nombre del poder.
+     * @param newName nombre del poder a asignar.
+     */
     @Override
     public void setName(String newName) {
-        if(newName == null)
+        if(newName == null) //El nombre no puede ser null;
             throw new NullPointerException();
         this.name = newName;
     }
 
+    /**
+     * Devuelve el porcentaje de daño del poder.
+     * @return el porcentaje de daño.
+     */
     @Override
     public double getDamage() {
         return this.damagePercentage;
     }
 
+    /**
+     * Asigna un porcentaje de daño al poder.
+     * @param damage porcentaje de daño a asignar. 
+     */
     @Override
     public void setDamage(double damage) {
-        if(0 <= damage || damage >1.5)
+        if(0 <= damage || damage >1.5) //
             throw new IllegalArgumentException();
         this.damagePercentage=damage;
     }
 
+     /**
+     * Devuelve el porcentaje de defensa del poder.
+     * @return porcentaje  de defensa del poder.
+     */
     @Override
     public double getDefense() {
         return this.defensePercentage;
@@ -53,7 +80,6 @@ public class DittoEternalMemories implements Chinpokomon{
 
     @Override
     public String getTechnicalDetail() {
-        // TODO Auto-generated method stub
         return this.technicalDetail;
     }
 
