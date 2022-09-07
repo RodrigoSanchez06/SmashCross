@@ -46,6 +46,7 @@ public class Main{
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
+                System.out.println(meganMan.getLife());
                 break;
             
             case 2:

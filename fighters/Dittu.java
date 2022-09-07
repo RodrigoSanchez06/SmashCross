@@ -54,11 +54,17 @@ public class Dittu implements Fighter {
     @Override
     public String attack(Fighter a) {
         if (this.actual != null) {
-            this.restLife(a.restLife(this.realDamage()));
+            a.restLife(this.realDamage());
             return actual.attackNarration();
         }
         a.restLife(this.basicAttack);
         return "Dittu da golpes a piño limpio";
+    }
+
+    @Override
+    public double getLife() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
 }
