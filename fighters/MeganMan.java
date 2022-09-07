@@ -9,6 +9,7 @@ public class MeganMan implements Fighter {
     private double life = 100;
     private double basicAttack = 10;
     private Copcam actual;
+    private boolean defense=false;
 
     public String fightersIntro() {
         return "MeganMan salta de una nave directo hacia el escenario, hace una grieta en el, se levanta y se pone modo ataque";
@@ -42,10 +43,10 @@ public class MeganMan implements Fighter {
     public String defend(Fighter a) {
         if (this.actual != null) {
             this.restLife(a.realDamage() * this.actual.getDefense());
-            return actual.defenseNarration();
+            return a.attackCinematic()+"\n"+actual.defenseNarration();
         }
         this.restLife(a.realDamage());
-        return "MeganMan se puso en guardia pero al no tener poder recibio todo el daño";
+        return a.attackCinematic()+"\n"+"MeganMan se puso en guardia pero al no tener poder recibio todo el daño";
     }
 
     public void restLife(double totalDamage) {
@@ -57,10 +58,40 @@ public class MeganMan implements Fighter {
     public String attack(Fighter a) {
         if (this.actual != null) {
             a.restLife(this.realDamage());
-            return actual.attackNarration();
+            return actual.attackNarration()+"\n"+a.takenDamage();
         }
         a.restLife(this.basicAttack);
-        return "MeganMan da golpes a piño limpio";
+        return "MeganMan da golpes a puño limpio \n"+a.takenDamage();
+    }
+
+    public String itemCinematic(){
+        if(this.actual!=null){
+          return this.actual.getCinematic();
+        }
+        return null;
+    }
+
+    public String attackCinematic(){
+        if(this.actual!=null){
+            return this.actual.attackNarration();
+        }
+        return null;
+    }
+
+    public String dead(){
+        return "Meganman ha perdido todos sus puntos de vida y ha decidido retirarse de la pelea civilizadamente";
+    }
+
+    public void changeDefense(){
+        this.defense=!this.defense;
+    }
+
+    public boolean getState(){
+        return this.defense;
+    }
+
+    public String takenDamage(){
+        return "Meganman afirma que apenas sintio el golpe";
     }
 
     public double getLife(){

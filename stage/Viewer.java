@@ -47,28 +47,44 @@ public class Viewer implements Observer{
     /**
      *Escribe las actualizaciones en el archivo correspondiente, sin sobreescribir las actualizaciones previas.
      */
-    public void writeEvents(){
+    private void writeEvents(){
         try {
-            FileWriter report = new FileWriter(filePath, true);
-            report.write(eventsInTheArena + "\n");
+            FileWriter report = new FileWriter(filePath, true); 
+            report.write(eventsInTheArena + "\n"); //Escribe en el archivo.
             report.close();
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
+    /**
+     * Devuelve el id del espectador.
+     * @return Id del espectador.
+     */
     public int getViewerId(){
         return this.viewerId;
     }
 
+    /**
+     * Devuelve el nombre del espectador.
+     * @return nombre del espectador.
+     */
     public String getViewerName(){
         return this.viewerName;
     }
 
+    /**
+     * Devuelve el nombre del peleador favorito del espectador.
+     * @return nombre de peleador.
+     */
     public String getFavoriteFighter(){
         return this.favoriteFighter;
     }
 
+    /**
+     * Asigna el nombre del peleador favorito del espectador.
+     * @param favoriteFighter nombre del peleador a asignar.
+     */
     public void setFavoriteFighter(String favoriteFighter){
         this.favoriteFighter  = favoriteFighter;
     }
