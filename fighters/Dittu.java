@@ -63,8 +63,7 @@ public class Dittu implements Fighter {
 
     @Override
     public double getLife() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.life;
     }
 
 }
