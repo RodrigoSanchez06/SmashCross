@@ -1,9 +1,6 @@
 
 package fighters;
 
-import java.util.LinkedList;
-import java.util.List;
-import powers.chinpokomon.*;
 import powers.nientiendo.Kbomb;
 import powers.nientiendo.Nientiendo;
 import powers.nientiendo.OneMK;
@@ -60,11 +57,12 @@ public class Korby implements Fighter {
 
   @Override
   public String attack(Fighter a) {
-    String attackForm = "";
-    attackForm = actual.attackNarration();
-    a.restLife(this.basicAttack * actual.getDamage());
-
-    return attackForm;
+    if (this.actual != null) {
+      this.restLife(a.restLife(this.realDamage()));
+      return actual.attackNarration();
+    }
+    a.restLife(this.basicAttack);
+    return "Korby da golpes a piño limpio";
   }
 
 }
