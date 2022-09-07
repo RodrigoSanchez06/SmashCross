@@ -1,6 +1,5 @@
-import java.util.Random;
-import escenario.*;
 import fighters.*;
+import stage.*;
 
 public class Main{
     public static void main(String[] args) {
@@ -9,39 +8,48 @@ public class Main{
         System.out.println("Generando Arena....");
         Arena arena = new Arena();
         int id = 0;
-        Viewer firstViewer = new Viewer(id++, "Dittu", arena, "Rogerxdgta");
+        Viewer firstViewer = new Viewer(++id, "Dittu", arena, "Rogerxdgta");
         arena.register(firstViewer);
-        Viewer secondViewer =  new Viewer(id++, "MeganMan", arena, "Heinz");
+        Viewer secondViewer =  new Viewer(++id, "MeganMan", arena, "Heinz");
         arena.register(secondViewer);
-        Viewer thirdViewer = new Viewer(id++, "Korby", arena, "Chao");
+        Viewer thirdViewer = new Viewer(++id, "Korby", arena, "Chao");
         arena.register(thirdViewer);
-        Viewer fourthViewer = new  Viewer(id++, "Dittu", arena, "Vegetta777");
+        Viewer fourthViewer = new  Viewer(++id, "Dittu", arena, "Vegetta777");
         arena.register(fourthViewer);
 
-        int scenery = randomCase();
+        int scenery = randomIntNumber(1,3);
         Fighter korby = new Korby();
         Fighter dittu = new Dittu();
         Fighter meganMan = new  MeganMan(); 
+
+        System.out.println(scenery);
         
         switch (scenery) {
             case 1:
-                
+                System.out.println("Nos transportamos a pueblo Caleta.");
+                arena.setEventsInTheArea(korby.fightersIntro());
+                arena.communicate();
                 break;
             
             case 2:
-
+                System.out.println("Nos transportamos otro escenario.");
+                arena.setEventsInTheArea(korby.fightersIntro());
+                arena.communicate();
                 break;
 
             case 3:
-
+                System.out.println("Nos transportamos al tercer escenario.");
+                arena.setEventsInTheArea(korby.fightersIntro());
+                arena.communicate();
                 break;
             
             default:
+                System.out.println("Opcion no disponible");
                 break;
         }
     }
-    public static int randomCase(){
-        Random random = new Random();
-        return random.nextInt(3 + 1) + 1;
+    public static int randomIntNumber(int min, int max){
+        int randomInt= (int)Math.floor(Math.random()*(max-min+1)+min);
+        return randomInt;
     }
 }
