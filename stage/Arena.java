@@ -18,7 +18,7 @@ public class Arena implements Subject{
         observerList.add(viewer);   
         //Muestra en pantalla quien se añadió    
         System.out.println("EL espectador " + viewer.getViewerName() +  " Con ID " 
-            + viewer.getViewerId() + " se ha unido a ver los guamasos, apoyando a " + viewer.getFavoriteFighter());
+            + viewer.getViewerId() + " se ha unido a ver los guamasos, apoyando a " + viewer.getFavoriteFighter() + "\n");
     }
 
 

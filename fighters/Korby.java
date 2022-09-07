@@ -1,9 +1,6 @@
 
 package fighters;
 
-import java.util.LinkedList;
-import java.util.List;
-import powers.chinpokomon.*;
 import powers.nientiendo.Kbomb;
 import powers.nientiendo.Nientiendo;
 import powers.nientiendo.OneMK;

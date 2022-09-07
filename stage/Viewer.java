@@ -45,7 +45,7 @@ public class Viewer implements Observer{
     }
 
     /**
-     *
+     *Escribe las actualizaciones en el archivo correspondiente, sin sobreescribir las actualizaciones previas.
      */
     public void writeEvents(){
         try {

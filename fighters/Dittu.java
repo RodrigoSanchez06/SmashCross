@@ -1,7 +1,5 @@
 package fighters;
 
-import java.util.LinkedList;
-import java.util.List;
 import powers.chinpokomon.*;
 
 public class Dittu implements Fighter {
