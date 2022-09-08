@@ -34,8 +34,8 @@ public class Main {
                 arena.setEventsInTheArea("Nos transportamos a pueblo Caleta.\n");
                 arena.communicate();
 
-                System.out.println("*SALEN TODOS LOS PERSONAJES A PRESENTARSE...*\n");
-                arena.setEventsInTheArea("*SALEN TODOS LOS PERSONAJES A PRESENTARSE...*\n");
+                System.out.println("SALEN TODOS LOS PERSONAJES A PRESENTARSE...\n");
+                arena.setEventsInTheArea("SALEN TODOS LOS PERSONAJES A PRESENTARSE...\n");
                 arena.communicate();
 
                 System.out.println(korby.fightersIntro() + "\n");
@@ -58,6 +58,11 @@ public class Main {
                 arena.communicate();
 
                 cinematic = korby.itemCinematic() + "\n";
+                System.out.println(cinematic);
+                arena.setEventsInTheArea(cinematic);
+                arena.communicate();
+
+                cinematic = dittu.itemCinematic() + "\n";
                 System.out.println(cinematic);
                 arena.setEventsInTheArea(cinematic);
                 arena.communicate();
@@ -185,7 +190,17 @@ public class Main {
                 break;
 
             case 2:
-                System.out.println("Nos transportamos otro escenario.");
+                arena.setEventsInTheArea("\n");
+                arena.communicate();
+                System.out.println(
+                        "Transportando a todos los espectadores y peleadores a nuestro escenario BIZARRE TOWN.\n");
+                arena.setEventsInTheArea("Nos transportamos a pueblo BIZARRE TOWN.\n");
+                arena.communicate();
+
+                System.out.println("*SALEN TODOS LOS PERSONAJES A PRESENTARSE...*\n");
+                arena.setEventsInTheArea("*SALEN TODOS LOS PERSONAJES A PRESENTARSE...*\n");
+                arena.communicate();
+
                 System.out.println(korby.fightersIntro() + "\n");
                 arena.setEventsInTheArea(korby.fightersIntro());
                 arena.communicate();
@@ -195,6 +210,118 @@ public class Main {
                 System.out.println(meganMan.fightersIntro() + "\n");
                 arena.setEventsInTheArea(meganMan.fightersIntro());
                 arena.communicate();
+
+                meganMan.consumePowers();
+                korby.consumePowers();
+                dittu.consumePowers();
+
+                cinematic = meganMan.itemCinematic() + "\n";
+                System.out.println(cinematic);
+                arena.setEventsInTheArea(cinematic);
+                arena.communicate();
+
+                cinematic = korby.itemCinematic() + "\n";
+                System.out.println(cinematic);
+                arena.setEventsInTheArea(cinematic);
+                arena.communicate();
+
+                cinematic = dittu.itemCinematic() + "\n";
+                System.out.println(cinematic);
+                arena.setEventsInTheArea(cinematic);
+                arena.communicate();
+
+                // hasta la linea de arriba los jugadores se presentan
+
+                atack = meganMan.attack(korby) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = korby.defend(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = korby.attack(dittu) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = meganMan.attack(dittu) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                meganMan.consumePowers();
+
+                atack = meganMan.attack(dittu) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = dittu.defend(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                korby.consumePowers();
+
+                atack = korby.attack(dittu) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                // Por los calculos del guion aqui ditty ya no tiene vida por lo que se muere
+                System.out.println(dittu.dead());
+                arena.setEventsInTheArea(korby.dead());
+                arena.communicate();
+
+                // Inicia masacre de Korby para que gane MeganMan
+
+                atack = korby.attack(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = korby.attack(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = meganMan.attack(korby) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = korby.defend(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = meganMan.attack(korby) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = meganMan.attack(korby) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = meganMan.attack(korby) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                System.out.println(korby.dead());
+                arena.setEventsInTheArea(korby.dead());
+                arena.communicate();
+
+                System.out.println("El peleador MeganMan ha ganado el combate.");
+                arena.setEventsInTheArea("El peleador MeganMan ha ganado el combate.");
+                arena.communicate();
+                arena.isWinner("MeganMan");
+
                 break;
 
             case 3:
