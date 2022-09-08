@@ -1,33 +1,43 @@
 import fighters.*;
 import stage.*;
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
-        
+
         System.out.println("********** Bienvenido a Smash Cross **********\n");
         System.out.println("Generando Arena...\n");
         Arena arena = new Arena();
         int id = 0;
         Viewer firstViewer = new Viewer(++id, "Dittu", arena, "Rogerxdgta");
         arena.register(firstViewer);
-        Viewer secondViewer =  new Viewer(++id, "MeganMan", arena, "Heinz");
+        Viewer secondViewer = new Viewer(++id, "MeganMan", arena, "Heinz");
         arena.register(secondViewer);
         Viewer thirdViewer = new Viewer(++id, "Korby", arena, "Chao");
         arena.register(thirdViewer);
-        Viewer fourthViewer = new  Viewer(++id, "Dittu", arena, "Vegetta777");
+        Viewer fourthViewer = new Viewer(++id, "Dittu", arena, "Vegetta777");
         arena.register(fourthViewer);
 
-        int scenery = randomIntNumber(1,1);
+        int scenery = randomIntNumber(1, 1);
         Fighter korby = new Korby();
         Fighter dittu = new Dittu();
-        Fighter meganMan = new  MeganMan();
-        String atack, cinematic; 
+        Fighter meganMan = new MeganMan();
+        String atack, cinematic;
 
         System.out.println(scenery);
-        
+
         switch (scenery) {
             case 1:
-                System.out.println("Nos transportamos a pueblo Caleta.");
+                arena.setEventsInTheArea("\n");
+                arena.communicate();
+                System.out.println(
+                        "Transportando a todos los espectadores y peleadores a nuestro escenario PUEBLO CALETA.\n");
+                arena.setEventsInTheArea("Nos transportamos a pueblo Caleta.\n");
+                arena.communicate();
+
+                System.out.println("*SALEN TODOS LOS PERSONAJES A PRESENTARSE...*\n");
+                arena.setEventsInTheArea("*SALEN TODOS LOS PERSONAJES A PRESENTARSE...*\n");
+                arena.communicate();
+
                 System.out.println(korby.fightersIntro() + "\n");
                 arena.setEventsInTheArea(korby.fightersIntro());
                 arena.communicate();
@@ -40,61 +50,140 @@ public class Main{
 
                 meganMan.consumePowers();
                 korby.consumePowers();
+                dittu.consumePowers();
 
-                cinematic = meganMan.itemCinematic();
+                cinematic = meganMan.itemCinematic() + "\n";
                 System.out.println(cinematic);
                 arena.setEventsInTheArea(cinematic);
                 arena.communicate();
 
-                cinematic = korby.itemCinematic();
+                cinematic = korby.itemCinematic() + "\n";
                 System.out.println(cinematic);
                 arena.setEventsInTheArea(cinematic);
                 arena.communicate();
 
-                atack = korby.attack(meganMan);
-                System.out.println(atack);
-                arena.setEventsInTheArea(atack);
-                arena.communicate();
-                
-                atack=korby.attack(dittu);
+                dittu.consumePowers();
+
+                atack = korby.attack(meganMan) + "\n";
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
 
-                atack=meganMan.attack(korby);
+                korby.consumePowers();
+                meganMan.consumePowers();
+
+                atack = korby.attack(dittu) + "\n";
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
 
-                atack=meganMan.attack(korby);
+                meganMan.consumePowers();
+
+                atack = meganMan.attack(korby) + "\n";
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
 
-                atack=meganMan.attack(korby);
+                atack = meganMan.attack(korby) + "\n";
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
 
-                atack=dittu.attack(korby);
+                meganMan.consumePowers();
+
+                atack = meganMan.attack(korby) + "\n";
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
 
-                atack=korby.defend(meganMan);
+                meganMan.consumePowers();
+                dittu.consumePowers();
+
+                atack = dittu.attack(korby) + "\n";
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
 
-                atack=dittu.attack(korby);
+                meganMan.consumePowers();
+
+                if (korby.getLife() <= 0) {
+                    System.out.println(korby.dead());
+                    arena.setEventsInTheArea(korby.dead());
+                    arena.communicate();
+                } else {
+                    atack = dittu.attack(korby) + "\n";
+                    System.out.println(atack);
+                    arena.setEventsInTheArea(atack);
+                    arena.communicate();
+
+                    atack = meganMan.attack(korby) + "\n";
+                    System.out.println(atack);
+                    arena.setEventsInTheArea(atack);
+                    arena.communicate();
+                    System.out.println(korby.dead());
+                    arena.setEventsInTheArea(korby.dead());
+                    arena.communicate();
+                }
+
+                atack = meganMan.defend(dittu) + "\n";
                 System.out.println(atack);
                 arena.setEventsInTheArea(atack);
                 arena.communicate();
 
-                System.out.println(korby.getLife());
-                System.out.println(korby.dead());
+                meganMan.consumePowers();
+                dittu.consumePowers();
+
+                atack = dittu.attack(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = meganMan.defend(dittu) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                meganMan.consumePowers();
+                dittu.consumePowers();
+
+                atack = dittu.attack(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = dittu.defend(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = dittu.attack(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                atack = dittu.defend(meganMan) + "\n";
+                System.out.println(atack);
+                arena.setEventsInTheArea(atack);
+                arena.communicate();
+
+                while (meganMan.getLife() > 0) {
+                    atack = dittu.attack(meganMan) + "\n";
+                    System.out.println(atack);
+                    arena.setEventsInTheArea(atack);
+                    arena.communicate();
+                }
+
+                System.out.println(meganMan.dead());
+                arena.setEventsInTheArea(meganMan.dead());
+                arena.communicate();
+
+                System.out.println("El peleador Dittu ha ganado el combate.");
+                arena.setEventsInTheArea("El peleador Dittu ha ganado el combate.");
+                arena.communicate();
+                arena.isWinner("Dittu");
+
                 break;
-            
+
             case 2:
                 System.out.println("Nos transportamos otro escenario.");
                 System.out.println(korby.fightersIntro() + "\n");
@@ -120,14 +209,15 @@ public class Main{
                 arena.setEventsInTheArea(meganMan.fightersIntro());
                 arena.communicate();
                 break;
-            
+
             default:
                 System.out.println("Opcion no disponible");
                 break;
         }
     }
-    public static int randomIntNumber(int min, int max){
-        int randomInt= (int)Math.floor(Math.random()*(max-min+1)+min);
+
+    public static int randomIntNumber(int min, int max) {
+        int randomInt = (int) Math.floor(Math.random() * (max - min + 1) + min);
         return randomInt;
     }
 }
