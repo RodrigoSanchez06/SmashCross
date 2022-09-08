@@ -1,6 +1,15 @@
 import fighters.*;
 import stage.*;
 
+/**
+ * Práctica 1 Slash Cross
+ * 
+ * Created on Sep 7, 2022.
+ * 
+ * @author Aguirre Morales Gael Alejandro 319165704
+ * @author Romero Cruz Fernando 319314256
+ * @author Sánchez Nava Rodrigo 319222571
+ */
 public class Main {
     public static void main(String[] args) {
 
