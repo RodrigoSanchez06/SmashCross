@@ -104,7 +104,7 @@ public class Dittu implements Fighter {
      */
     @Override
     public String dead() {
-        return "Dittu ha perdido todos los puntos de via y se ha derretido en un charquito";
+        return "Dittu ha perdido todos los puntos de vida y se ha derretido en un charquito";
     }
 
     /**
