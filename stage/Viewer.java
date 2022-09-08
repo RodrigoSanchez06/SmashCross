@@ -1,11 +1,13 @@
 package stage;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Define un objeto de tipo Viewer, que será un observador y cobrará el papel de un Observer.
+ * Define un objeto de tipo Viewer, que será un observador y cobrará el papel de
+ * un Observer.
  */
-public class Viewer implements Observer{
+public class Viewer implements Observer {
 
     private int viewerId;
     private String viewerName;
@@ -15,20 +17,25 @@ public class Viewer implements Observer{
     private String filePath;
 
     /**
-     * Constructor de Viewer recibe los datos necesarios para inicializar un nuevo espectador y crea los archivos necesarios.
-     * @param viewerId id único de espectador.
+     * Constructor de Viewer recibe los datos necesarios para inicializar un nuevo
+     * espectador y crea los archivos necesarios.
+     * 
+     * @param viewerId        id único de espectador.
      * @param favoriteFighter peleador favorito del espectador.
-     * @param fightingPlace arena en donde pelearan los personajes.
-     * @param viewerName nombre del espectador.
+     * @param fightingPlace   arena en donde pelearan los personajes.
+     * @param viewerName      nombre del espectador.
      */
-    public Viewer(int viewerId, String favoriteFighter, Arena fightingPlace, String viewerName){
+    public Viewer(int viewerId, String favoriteFighter, Arena fightingPlace, String viewerName) {
         this.viewerId = viewerId;
         this.favoriteFighter = favoriteFighter;
         this.fightingPlace = fightingPlace;
         this.viewerName = viewerName;
-        try { //Crea los archivos txt de cada espectador.
-            this.filePath = String.valueOf(viewerId + "-") + viewerName +".txt";
+        try { // Crea los archivos txt de cada espectador.
+            this.filePath = String.valueOf(viewerId + "-") + viewerName + ".txt";
             FileWriter fw = new FileWriter(filePath, true);
+            fw.write("Hola " + viewerName
+                    + " Bienvenido a Slash Cross Te haz unido a una sesión, tu jugador a apoyar será "
+                    + favoriteFighter);
             fw.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -45,12 +52,14 @@ public class Viewer implements Observer{
     }
 
     /**
-     *Escribe las actualizaciones en el archivo correspondiente, sin sobreescribir las actualizaciones previas.
+     * Escribe las actualizaciones en el archivo correspondiente, sin sobreescribir
+     * las actualizaciones previas.
      */
-    private void writeEvents(){
+    private void writeEvents() {
         try {
-            FileWriter report = new FileWriter(filePath, true); 
-            report.write(eventsInTheArena + "\n"); //Escribe en el archivo.
+            FileWriter report = new FileWriter(filePath, true);
+            report.write(eventsInTheArena + "\n"); // Escribe en el archivo.
+
             report.close();
         } catch (IOException e) {
             System.out.println(e);
@@ -59,35 +68,63 @@ public class Viewer implements Observer{
 
     /**
      * Devuelve el id del espectador.
+     * 
      * @return Id del espectador.
      */
-    public int getViewerId(){
+    public int getViewerId() {
         return this.viewerId;
     }
 
     /**
      * Devuelve el nombre del espectador.
+     * 
      * @return nombre del espectador.
      */
-    public String getViewerName(){
+    public String getViewerName() {
         return this.viewerName;
     }
 
     /**
      * Devuelve el nombre del peleador favorito del espectador.
+     * 
      * @return nombre de peleador.
      */
-    public String getFavoriteFighter(){
+    public String getFavoriteFighter() {
         return this.favoriteFighter;
     }
 
     /**
      * Asigna el nombre del peleador favorito del espectador.
+     * 
      * @param favoriteFighter nombre del peleador a asignar.
      */
-    public void setFavoriteFighter(String favoriteFighter){
-        this.favoriteFighter  = favoriteFighter;
+    public void setFavoriteFighter(String favoriteFighter) {
+        this.favoriteFighter = favoriteFighter;
+    }
+
+    /**
+     * Verifica si el peleador favorito del espectador es ganador o no.
+     * 
+     * @param winner nombre del peleador ganador.
+     */
+    public void isWinner(String winner) {
+        if (winner.equals(favoriteFighter)) {
+            try {
+                FileWriter report = new FileWriter(filePath, true);
+                report.write("TU PELEADOR FAVORITO HA GANADO"); // Escribe en el archivo.
+                report.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        } else {
+            try {
+                FileWriter report = new FileWriter(filePath, true);
+                report.write("TU PELEADOR FAVORITO HA PERDIDO"); // Escribe en el archivo.
+                report.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        }
     }
 
 }
-
